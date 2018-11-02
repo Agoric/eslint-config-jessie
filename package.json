@@ -14,5 +14,9 @@
   ],
   "peerDependencies": {
     "eslint": ">= 3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agoric/eslint-config-jessie.git"
   }
 }
