@@ -2,15 +2,16 @@
 
 [Jessie](https://github.com/Agoric/Jessie/) is a tiny subset of JavaScript designed for writing smart contracts with confidence. Jessie removes the hazardous parts to create an [object-capability](https://agoric.com/faqs/#ocaps) subset that supports reasoning about code functionality and robustness.
 
-For more information on Jessie, view the [repository on Github](https://github.com/Agoric/Jessie). You can also [view the grammar written in BNF](https://github.com/Agoric/Jessie/blob/master/src/tinyses.js). 
+For more information on Jessie, view the [repository on Github](https://github.com/Agoric/Jessie). You can also [view the grammar written in BNF](https://github.com/Agoric/Jessie/blob/96557ee131961c15bc2bfa891df81597f6015a85/src/tinyses.js#L39). 
 
 # eslint-config-jessie
 
 `eslint-config-jessie` is a package that includes the basic ESLint configuration for enforcing most Jessie rules. 
 
 ## Installation
+Prerequisites: Node.js (>=6.14), npm version 3+.
 
-You'll first need to install [ESLint](http://eslint.org):
+You'll first need to install [ESLint](http://eslint.org). We recommend installing it locally rather than globally:
 
 ```
 $ npm i eslint --save-dev
@@ -22,25 +23,29 @@ Next, install `eslint-config-jessie`:
 $ npm install eslint-config-jessie --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-config-jessie` globally.
-
 ## Usage
 
-Add `eslint-config-jessie` to the `extends` property value:
+You should then setup a configuration file if you don't have one yet:
 
 ```
-{
-    "extends": "eslint-config-jessie"
-}
+$ ./node_modules/.bin/eslint --init
 ```
 
-You can also omit the eslint-config- and it will be automatically assumed by ESLint:
+Now we need to turn on the Jessie rules in the ESLint [config file](https://eslint.org/docs/user-guide/configuring). This config file will have various properties such as `"rules"` and `"env"`. Find or add the `"extends"` property, and set the value to `jessie`:
 
 ```
-{
     "extends": "jessie"
-}
 ```
+
+This will allow you to use the Jessie [shareable config file](https://eslint.org/docs/user-guide/configuring#using-a-shareable-configuration-package).
+
+After that, you can run ESLint in your project’s root directory like this:
+
+```
+$ ./node_modules/.bin/eslint yourfile.js
+```
+
+Additionally, many IDEs will recognize your ESLint settings automatically and show errors and warnings in your code as you type. 
 
 ## Rules included
 
@@ -72,13 +77,13 @@ Jessie deliberately does not include:
 
 ## Future Tasks
 
-### Tests
-
-Each of these rules should have a few basic tests. 
+1. Better error messages: The default error messages aren't as clear as they could be. 
+2. More written tests for each of the rules
+3. Enforce more of the Jessie subset through an ESLint plugin that creates new rules, including the rules below:
 
 ### Jessie rules still to include
 
-* treats `async`, `arguments`, and `eval` as reserved keywords
+* treat `async`, `arguments`, and `eval` as reserved keywords
 * avoid this-capture hazards - i.e. looking up a function in an array and calling it can be used to capture the array itself through `this`. Statically rejects array\[+i](arg)
 * all objects made by literal expressions (object literals, array literals, function literals, etc) must be tamper-proofed with `def` before they can be aliased or escape from their static context of origin
 * no top level mutability
