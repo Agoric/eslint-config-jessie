@@ -79,7 +79,7 @@ Each of these rules should have a few basic tests.
 ### Jessie rules still to include
 
 * treats `async`, `arguments`, and `eval` as reserved keywords
-* avoid this-capture hazards - i.e. looking up a function in an array and calling it can be used to capture the array itself through this. Statically rejects array\[+i](arg)
+* avoid this-capture hazards - i.e. looking up a function in an array and calling it can be used to capture the array itself through `this`. Statically rejects array\[+i](arg)
 * all objects made by literal expressions (object literals, array literals, function literals, etc) must be tamper-proofed with `def` before they can be aliased or escape from their static context of origin
 * no top level mutability
 * restrict index access to number-names, require `+` as a prefix in indices.
