@@ -18,5 +18,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Agoric/eslint-config-jessie.git"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "mocha": "^5.2.0"
   }
 }
