@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-jessie",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A shareable config for the Jessie subset of JavaScript",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "eslintconfig"
   ],
   "peerDependencies": {
-    "eslint": ">= 3"
+    "eslint": "^5.9.0"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,8 @@
   },
   "devDependencies": {
     "eslint": "^5.9.0",
-    "mocha": "^5.2.0"
-  },
-  "dependencies": {
+    "mocha": "^5.2.0",
     "requireindex": "^1.2.0"
-  }
+  },
+  "dependencies": {}
 }
