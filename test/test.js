@@ -1,13 +1,22 @@
 'use strict';
 
-var path = require('path');
+const path = require('path');
+const requireIndex = require("requireindex");
+
 const configTester = require( path.resolve( __dirname, "./util/config-tester.js" ) );
-const myConfig = require( path.resolve( __dirname, "../index.js" ) );
-const noForIn = require( path.resolve( __dirname, "./rules/no-for-in.js" ) );
-const strict = require( path.resolve( __dirname, "./rules/strict.js" ) );
 
+const myConfig = {};
+myConfig.env = require('../config/env.js');
+myConfig.parserOptions = require('../config/parserOptions');
+const rules = requireIndex(path.resolve(__dirname, "../config/rules"));
 
-console.log(myConfig);
-
-//configTester.configTester(myConfig, noForIn);
-configTester.configTester(myConfig, strict);
+// we want to iterate over the rules and bring in their matching tests
+for (const rule in rules) {
+	if (rules.hasOwnProperty(rule)) {
+		myConfig.rules = {};
+		myConfig.rules[rule] = rules[rule];
+		console.log(rule);
+		const test = require(path.resolve(__dirname, "./rules/", rule));
+		configTester.configTester(rule, myConfig, test);
+	}
+}

@@ -76,10 +76,8 @@ Jessie deliberately does not include:
 * ternary expressions (`?`)
 
 ## Future Tasks
-
-1. Better error messages: The default error messages aren't as clear as they could be. 
-2. More written tests for each of the rules
-3. Enforce more of the Jessie subset through an ESLint plugin that creates new rules, including the rules below:
+1. Add more extensive tests (currently, only the most obvious usages are tested in many cases.)
+2. Enforce more of the Jessie subset through an ESLint plugin that creates new rules, including the rules below:
 
 ### Jessie rules still to include
 
@@ -88,4 +86,14 @@ Jessie deliberately does not include:
 * all objects made by literal expressions (object literals, array literals, function literals, etc) must be tamper-proofed with `def` before they can be aliased or escape from their static context of origin
 * no top level mutability
 * restrict index access to number-names, require `+` as a prefix in indices.
+* disallow naked statements in switch cases
+
+## Changelog
+
+11-20-2018 
+* added better error messages
+* added basic tests for all rules
+* added a config-tester utility
+* removed 'strict' as a rule because it does not enforce the strict rules as expected
+* recognized that 'curly' does not enforce curly braces within switch statements, which Jessie requires. A test for this is commented out. 
 

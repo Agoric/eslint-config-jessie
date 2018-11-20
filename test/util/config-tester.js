@@ -36,12 +36,10 @@ function testInvalidTemplate(item, formatter, cli) {
 	const report = cli.executeOnText(item.code);
 	for (const result of report.results) {
 		const messages = result.messages;
-
 		assert.strictEqual(
 			messages.length, item.errors.length,
 			`Should have ${item.errors.length} error${item.errors.length === 1 ? "" : "s"} but had ${messages.length}: \n${messages}`
 		);
-
 		for (let i = 0, l = item.errors.length; i < l; i++) {
 			const error = item.errors[i];
 			const message = messages[i];
@@ -62,30 +60,31 @@ function testInvalidTemplate(item, formatter, cli) {
 }
 
 module.exports = {
-	configTester: (configFile, testFile) => {
+	configTester: (ruleName, configFile, testFile) => {
 		const cli = new eslint.CLIEngine(configFile);
 		const formatter = cli.getFormatter();
 
 
 		// testFile should have valid and invalid examples
 
-		describe("valid", () => {
-			testFile.valid.forEach(valid => {
-				it(typeof valid === "object" ? valid.code : valid, () => {
-					testValidTemplate(valid, formatter, cli);
+		describe(ruleName, () => {
+			describe("valid", () => {
+				testFile.valid.forEach(valid => {
+					it(typeof valid === "object" ? valid.code : valid, () => {
+						testValidTemplate(valid, formatter, cli);
+					});
+				});
+			});
+
+
+			describe("invalid", () => {
+				testFile.invalid.forEach(invalid => {
+					it(invalid.code, () => {
+						testInvalidTemplate(invalid, formatter, cli);
+					});
 				});
 			});
 		});
-
-
-		describe("invalid", () => {
-			testFile.invalid.forEach(invalid => {
-				it(invalid.code, () => {
-					testInvalidTemplate(invalid, formatter, cli);
-				});
-			});
-		});
-
 	}
 };
 

@@ -1,31 +1,8 @@
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-
 const requireIndex = require("requireindex");
 
-//------------------------------------------------------------------------------
-// Plugin Definition
-//------------------------------------------------------------------------------
-
-
-
-
-module.exports = {
-	"env": {
-		"browser": true,
-		"commonjs": true,
-		"es6": true,
-		"node": true
-	},
-	"parserOptions": {
-		"ecmaVersion": 2018,
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"impliedStrict": true,
-		}
-	},
-};
+module.exports.env = require('./config/env.js');
+module.exports.parserOptions = require('./config/parserOptions');
 
 // import all rules in lib/rules
-module.exports.rules = requireIndex(__dirname + "/rules");
+module.exports.rules = requireIndex(__dirname + "/config/rules");
+
