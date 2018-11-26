@@ -3,7 +3,7 @@
 const path = require('path');
 const requireIndex = require("requireindex");
 
-const configTester = require( path.resolve( __dirname, "./util/config-tester.js" ) );
+const configTester = require("eslint-config-rule-tester");
 
 const myConfig = {};
 myConfig.env = require('../config/env.js');
@@ -15,7 +15,6 @@ for (const rule in rules) {
 	if (rules.hasOwnProperty(rule)) {
 		myConfig.rules = {};
 		myConfig.rules[rule] = rules[rule];
-		console.log(rule);
 		const test = require(path.resolve(__dirname, "./rules/", rule));
 		configTester.configTester(rule, myConfig, test);
 	}

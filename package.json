@@ -20,9 +20,10 @@
     "url": "git+https://github.com/Agoric/eslint-config-jessie.git"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "mocha": "^5.2.0",
-    "requireindex": "^1.2.0"
+    "eslint-config-rule-tester": "0.0.1",
+    "mocha": "^5.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "requireindex": "^1.2.0"
+  }
 }

@@ -5,7 +5,7 @@
 // mocha doesn't take arguments by default so it will look for a test with that name, so we have to just ignore that
 
 const path = require('path');
-const configTester = require( path.resolve( __dirname, "./util/config-tester.js" ) );
+const configTester = require("eslint-config-rule-tester");
 
 // ruleName is the fourth argument
 const ruleName = process.argv[3];
