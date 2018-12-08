@@ -2,7 +2,7 @@
 
 [Jessie](https://github.com/Agoric/Jessie/) is a tiny subset of JavaScript designed for writing smart contracts with confidence. Jessie removes the hazardous parts to create an [object-capability](https://agoric.com/faqs/#ocaps) subset that supports reasoning about code functionality and robustness.
 
-For more information on Jessie, view the [repository on Github](https://github.com/Agoric/Jessie). You can also [view the grammar written in BNF](https://github.com/Agoric/Jessie/blob/96557ee131961c15bc2bfa891df81597f6015a85/src/tinyses.js#L39). 
+For more information on Jessie, view the [repository on Github](https://github.com/Agoric/Jessie). You can also [view the grammar written in BNF](https://github.com/Agoric/Jessie/blob/master/src/tinyses.js). 
 
 # eslint-config-jessie
 
