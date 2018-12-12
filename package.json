@@ -20,10 +20,30 @@
     "url": "git+https://github.com/Agoric/eslint-config-jessie.git"
   },
   "devDependencies": {
-    "eslint-config-rule-tester": "0.0.1",
-    "mocha": "^5.2.0"
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-rule-tester": "file:../eslint-config-rule-tester",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "mocha": "^5.2.0",
+    "prettier": "1.15.3"
   },
   "dependencies": {
     "requireindex": "^1.2.0"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "prettier --write",
+      "eslint -c airbnb-config.js",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

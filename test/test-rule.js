@@ -22,4 +22,4 @@ myConfig.rules = {};
 myConfig.rules[ruleName] = require(path.resolve(__dirname, "../config/rules", ruleName));
 
 // run the tests and print results to the console
-configTester.configTester(ruleName, myConfig, tests);
+configTester(ruleName, myConfig, tests);

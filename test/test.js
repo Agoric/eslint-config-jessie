@@ -16,6 +16,6 @@ for (const rule in rules) {
 		myConfig.rules = {};
 		myConfig.rules[rule] = rules[rule];
 		const test = require(path.resolve(__dirname, "./rules/", rule));
-		configTester.configTester(rule, myConfig, test);
+		configTester(rule, myConfig, test);
 	}
 }

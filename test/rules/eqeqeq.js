@@ -24,7 +24,7 @@ module.exports = {
 			errors: ["Expected '!==' and instead saw '!='."]
 		}
 	]
-}
+};
 
 
 
