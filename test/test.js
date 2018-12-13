@@ -11,7 +11,7 @@ const rules = requireIndex(path.resolve(__dirname, '../config/rules'));
 
 // we want to iterate over the rules and bring in their matching tests
 
-Object.keys(rules).forEach((rule) => {
+Object.keys(rules).forEach(rule => {
   myConfig.rules = {};
   myConfig.rules[rule] = rules[rule];
   // eslint-disable-next-line global-require

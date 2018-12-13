@@ -11,7 +11,7 @@ myConfig.parserOptions = require('../config/parserOptions');
 myConfig.rules = requireIndex(path.join(__dirname, '../config/rules'));
 
 // iterate through all the tests
-Object.keys(myConfig.rules).forEach((rule) => {
+Object.keys(myConfig.rules).forEach(rule => {
   // eslint-disable-next-line global-require
   const test = require(path.resolve(__dirname, './rules/', rule)); // eslint-disable-line import/no-dynamic-require
   configTester(rule, myConfig, test);
