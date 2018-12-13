@@ -2,7 +2,7 @@ module.exports = {
   valid: [
     `
     if (foo) {
-      foo++;
+      foo+=1;
       }
     `,
     `
@@ -34,7 +34,7 @@ module.exports = {
   ],
   invalid: [
     {
-      code: 'if (foo) foo++;',
+      code: 'if (foo) foo+=1;',
       errors: ["Expected { after 'if' condition."],
     },
     {

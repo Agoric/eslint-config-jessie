@@ -1,6 +1,6 @@
 module.exports = {
   valid: [
-    'var name = "ESLint";',
+    'let name = "ESLint";',
     `
       object.method = function() {
           // ...
@@ -9,7 +9,7 @@ module.exports = {
   ],
   invalid: [
     {
-      code: "var name = 'ESLint'",
+      code: "let name = 'ESLint'",
       errors: ['Missing semicolon.'],
     },
     {

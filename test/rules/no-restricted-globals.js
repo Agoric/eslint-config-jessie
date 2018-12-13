@@ -1,12 +1,12 @@
 module.exports = {
-  valid: ['var regex1 = /\\w+/;'],
+  valid: [],
   invalid: [
     {
-      code: "var regex2 = new RegExp('\\\\w+');",
+      code: 'let flags = RegExp.prototype.flags;',
       errors: ["Unexpected use of 'RegExp'."],
     },
     {
-      code: "var date1 = new Date('December 17, 1995 03:24:00');",
+      code: 'let date1 = Date.now();',
       errors: ["Unexpected use of 'Date'."],
     },
   ],

@@ -1,38 +1,38 @@
 module.exports = {
   valid: [
-    'var x = y || z;',
-    'var x = y && z;',
-    'var x = y > z;',
-    'var x = y < z;',
+    'let x = y || z;',
+    'let x = y && z;',
+    'let x = y > z;',
+    'let x = y < z;',
     'x += y;',
   ],
   invalid: [
     {
-      code: 'var x = y | z;',
+      code: 'let x = y | z;',
       errors: ["Unexpected use of '|'."],
     },
     {
-      code: 'var x = y & z;',
+      code: 'let x = y & z;',
       errors: ["Unexpected use of '&'."],
     },
     {
-      code: 'var x = y ^ z;',
+      code: 'let x = y ^ z;',
       errors: ["Unexpected use of '^'."],
     },
     {
-      code: 'var x = ~ z;',
+      code: 'let x = ~ z;',
       errors: ["Unexpected use of '~'."],
     },
     {
-      code: 'var x = y << z;',
+      code: 'let x = y << z;',
       errors: ["Unexpected use of '<<'."],
     },
     {
-      code: 'var x = y >> z;',
+      code: 'let x = y >> z;',
       errors: ["Unexpected use of '>>'."],
     },
     {
-      code: 'var x = y >>> z;',
+      code: 'let x = y >>> z;',
       errors: ["Unexpected use of '>>>'."],
     },
     {

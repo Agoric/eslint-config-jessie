@@ -4,12 +4,12 @@ module.exports = {
   ],
   invalid: [
     {
-      code: 'var person = {}; for (x in person) { console.log(x); }', // for/in
+      code: 'let person = {}; for (x in person) { console.log(x); }', // for/in
       errors: ['for/in statements are not allowed.'],
     },
     {
       code: `
-          var car = {make: 'Honda', model: 'Accord', year: 1998};
+          let car = {make: 'Honda', model: 'Accord', year: 1998};
           'make' in car;
         `, // "BinaryExpression[operator='in']"
       errors: ["'in' is not allowed."],
@@ -23,7 +23,7 @@ module.exports = {
       errors: ["'instanceof' is not allowed."],
     },
     {
-      code: "var rand = new Person('Rand McNally', 33, 'M');", // "NewExpression",
+      code: "let rand = new Person('Rand McNally', 33, 'M');", // "NewExpression",
       errors: ["'new' is not allowed."],
     },
     {
@@ -31,7 +31,7 @@ module.exports = {
           function* makeRangeIterator(start = 0, end = Infinity, step = 1) {
             let iterationCount = 0;
               for (let i = start; i < end; i += step) {
-                iterationCount++;
+                iterationCount += 1;
                 yield i;
             }
             return iterationCount;
@@ -40,24 +40,24 @@ module.exports = {
       errors: ['generators are not allowed.'],
     },
     {
-      code: 'async function asyncCall() {}', // "FunctionDeclaration[async=true]",
+      code: 'async function asyncCall() {};', // "FunctionDeclaration[async=true]",
       errors: ['async functions are not allowed.'],
     },
     {
-      code: 'var add = async function(x) {}', // "FunctionExpression[async=true]",
+      code: 'let add = async function(x) {};', // "FunctionExpression[async=true]",
       errors: ['async functions are not allowed.'],
     },
     {
-      code: 'var add = async () => {}', // "ArrowFunctionExpression[async=true]",
+      code: 'let add = async () => {};', // "ArrowFunctionExpression[async=true]",
       errors: ['async functions are not allowed.'],
     },
     {
       code: `
-          var text = "";
-          var i = 0;
+          let text = "";
+          let i = 0;
           do {
             text += "The number is " + i;
-            i++;
+            i=i+1;
           }
           while (i < 5);
         `, // "DoWhileStatement",
@@ -65,37 +65,37 @@ module.exports = {
     },
     {
       code: `
-          var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+          let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
           delete person.age;
         `, // "UnaryExpression[operator='delete']",
       errors: ["'delete' not allowed."],
     },
     {
       code: `
-          var object1 = {a: 1, b: 2, c: 3};
-          for (var property1 in object1) {
+          let object1 = {a: 1, b: 2, c: 3};
+          for (let property1 in object1) {
             console.log(property1);
           }
         `, // "ForInStatement",
       errors: ['for/in statements are not allowed.'],
     },
     {
-      code: "var myObj = {1: 'test'}; myObj[0+1];", // "MemberExpression[computed=true]",
+      code: "let myObj = {1: 'test'}; myObj[0+1];", // "MemberExpression[computed=true]",
       errors: ['computed property names are not allowed.'],
     },
     {
       code: `
-          var obj1 = {
+          let obj1 = {
             method1() {
               console.log('method 1');
             }
-          }
+          };
      
-          var obj2 = {
+          let obj2 = {
             method2() {
               super.method1();
             }
-          }
+          };
     
           Object.setPrototypeOf(obj2, obj1);
           obj2.method2();
@@ -105,25 +105,25 @@ module.exports = {
     {
       code: `
           function Foo() {
-            new.target
-          }
+            new.target;
+          };
         `, // "MetaProperty",
       errors: ["'MetaProperty' is not allowed."],
     },
     {
       code: `
-              var Rectangle = class {
+              let Rectangle = class {
                 constructor() {};
-              }
+              };
             `, // "ClassExpression",
       errors: ["'ClassExpression' is not allowed."],
     },
     {
-      code: "eval('2 + 2')", // "CallExpression[callee.name='eval']",
+      code: "eval('2 + 2');", // "CallExpression[callee.name='eval']",
       errors: ["'eval' is not allowed."],
     },
     {
-      code: 'var regex1 = /\\w+/;', // "Literal[regex='true']",
+      code: 'let regex1 = /\\w+/;', // "Literal[regex='true']",
       errors: ['regexp literal syntax is not allowed.'],
     },
   ],

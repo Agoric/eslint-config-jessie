@@ -1,7 +1,7 @@
 module.exports = {
   valid: [
     `
-      var foo;
+      let foo;
       if (isBar) {
         foo = baz;
       } else {
@@ -19,7 +19,7 @@ module.exports = {
   ],
   invalid: [
     {
-      code: 'var foo = isBar ? baz : qux;',
+      code: 'let foo = isBar ? baz : qux;',
       errors: ['Ternary operator used.'],
     },
     {

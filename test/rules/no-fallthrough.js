@@ -24,7 +24,7 @@ module.exports = {
       switch (foo) {
         case 1:
           doSomething();
-          throw new Error("Boo!");
+          throw "Boo";
         case 2:
           doSomething();
       }
