@@ -1,4 +1,1 @@
-module.exports = [
-	"error",
-	"always"
-];
+module.exports = ['error', 'always'];

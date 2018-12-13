@@ -1,4 +1,4 @@
 module.exports = {
-	"ecmaVersion": 2018,
-	"sourceType": "module",
+  ecmaVersion: 2018,
+  sourceType: 'module',
 };

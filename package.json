@@ -39,6 +39,10 @@
       "prettier --write",
       "eslint -c airbnb-config.js",
       "git add"
+    ],
+    "*.{md}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "husky": {

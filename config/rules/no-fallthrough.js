@@ -1,1 +1,1 @@
-module.exports = ["error", { "commentPattern": "fallthrough is not allowed" }]
+module.exports = ['error', { commentPattern: 'fallthrough is not allowed' }];

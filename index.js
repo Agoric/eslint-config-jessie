@@ -1,7 +1,6 @@
 const requireIndex = require('requireindex');
 const path = require('path');
 
-
 module.exports.env = require('./config/env.js');
 module.exports.parserOptions = require('./config/parserOptions');
 

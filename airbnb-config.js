@@ -1,12 +1,11 @@
 module.exports = {
-  "extends": "airbnb",
-  "env": {
-    "es6": true,
-    "mocha": true
+  extends: 'airbnb',
+  env: {
+    es6: true,
+    mocha: true,
   },
-  "rules": {
-    "implicit-arrow-linebreak": "off",
-    "function-paren-newline": "off",
-  }
+  rules: {
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
+  },
 };
-
