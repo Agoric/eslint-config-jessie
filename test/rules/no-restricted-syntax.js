@@ -111,7 +111,11 @@ module.exports = {
       errors: ["'MetaProperty' is not allowed."],
     },
     {
-      code: 'var Rectangle = class {\n' + '  constructor() {};' + '}\n', // "ClassExpression",
+      code: `
+              var Rectangle = class {
+                constructor() {};
+              }
+            `, // "ClassExpression",
       errors: ["'ClassExpression' is not allowed."],
     },
     {

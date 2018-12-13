@@ -2,35 +2,35 @@ module.exports = {
   valid: [
     `
     if (foo) {
-		  foo++;
-		}
-		`,
+      foo++;
+      }
+    `,
     `
     while (bar) {
-		  baz();
-		}
-		`,
+      baz();
+    }
+    `,
     `
     if (foo) {
-		  baz();
-		} else {
-		  qux();
-		}
-		`,
+      baz();
+    } else {
+      qux();
+    }
+    `,
     `
     switch (false) {
-		  case true: {
-		    let x = 'bar';
-		    console.log(x);
-		    break;
-		  }
-		  case false: {
-		    let x = 'baz';
-		    console.log(x);
-		    break;
-		  }
-		}
-		`,
+      case true: {
+        let x = 'bar';
+        console.log(x);
+        break;
+      }
+      case false: {
+        let x = 'baz';
+        console.log(x);
+        break;
+      }
+    }
+    `,
   ],
   invalid: [
     {
@@ -40,25 +40,25 @@ module.exports = {
     {
       code: `
         while (bar)
-				  baz();
-			 `,
+          baz();
+       `,
       errors: ["Expected { after 'while' condition."],
     },
     {
       code: `
         if (foo) {
-				  baz();
-				} else qux();
-			`,
+          baz();
+        } else qux();
+      `,
       errors: ["Expected { after 'else'."],
     },
     // {
     //   code: `switch (false) {
-    // 		    case true:
-    // 		      let x = 'bar';
-    // 		      console.log(x);
-    // 		      break;
-    // 		}`,
+    //         case true:
+    //           let x = 'bar';
+    //           console.log(x);
+    //           break;
+    //     }`,
     //   errors: ["Expected { after 'true:'."],
     // },
   ],
