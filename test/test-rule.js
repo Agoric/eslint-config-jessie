@@ -1,5 +1,3 @@
-
-
 // to use, add the rule name after the file path:
 // $ ./node_modules/mocha/bin/mocha test/test-rule.js "no-plusplus"
 
