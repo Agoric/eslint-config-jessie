@@ -122,5 +122,9 @@ module.exports = {
       code: "eval('2 + 2')", // "CallExpression[callee.name='eval']",
       errors: ["'eval' is not allowed."],
     },
+    {
+      code: 'var regex1 = /\\w+/;', // "Literal[regex='true']",
+      errors: ['regexp literal syntax is not allowed.'],
+    },
   ],
 };

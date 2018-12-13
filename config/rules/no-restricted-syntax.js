@@ -65,7 +65,7 @@ module.exports = [
     message: "'eval' is not allowed.",
   },
   {
-    selector: "Literal[regex='true']",
+    selector: 'Literal[regex]',
     message: 'regexp literal syntax is not allowed.',
   },
 ];

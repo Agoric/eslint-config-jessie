@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/test.js",
-    "format": "prettier --write '**/*.{js,jsx}'",
+    "format": "prettier --write '**/*.{js,jsx,md}'",
     "lint": "./node_modules/.bin/eslint -c airbnb-config.js '**/*.{js,jsx}'"
   },
   "author": "Agoric",

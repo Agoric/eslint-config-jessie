@@ -11,7 +11,7 @@ module.exports = {
      `,
     `
       function bar(foo) {
-        switch(foo) {
+        switch (foo) {
           case 1:
             doSomething();
             return;
@@ -39,7 +39,7 @@ module.exports = {
   invalid: [
     {
       code: `
-          switch(foo) {
+          switch (foo) {
             case 1:
               doSomething();
             case 2:
@@ -50,7 +50,7 @@ module.exports = {
     },
     {
       code: `
-          switch(foo) {
+          switch (foo) {
             case 1:
               doSomething();
               
