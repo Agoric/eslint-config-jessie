@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/test.js",
-    "format": "prettier --write '**/*.{js,jsx,md}'",
-    "lint": "./node_modules/.bin/eslint -c airbnb-config.js '**/*.{js,jsx}'"
+    "lint-fix": "eslint --fix -c airbnb-config.js '**/*.{js,jsx}'",
+    "lint-check": "eslint -c airbnb-config.js '**/*.{js,jsx}'"
   },
   "author": "Agoric",
   "license": "Apache-2.0",
@@ -24,9 +24,11 @@
   "devDependencies": {
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
     "eslint-config-rule-tester": "0.0.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
     "prettier": "1.15.3"
