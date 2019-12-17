@@ -5,13 +5,16 @@ module.exports = {
     sourceType: 'module',
   },
   globals: {
-    BigInt: "readonly",
+    BigInt: 'readonly',
   },
   rules: {
-    'curly': 'error',
-    'eqeqeq': ['error', 'always'],
+    curly: 'error',
+    eqeqeq: ['error', 'always'],
     'no-bitwise': ['error'],
-    'no-fallthrough': ['error', { commentPattern: 'fallthrough is not allowed' }],
+    'no-fallthrough': [
+      'error',
+      { commentPattern: 'fallthrough is not allowed' },
+    ],
     'no-plusplus': ['error'],
     'no-restricted-globals': ['error', 'RegExp', 'Date'],
     'no-restricted-syntax': [
@@ -87,6 +90,6 @@ module.exports = {
     ],
     'no-ternary': ['error'],
     'no-var': ['error'],
-    'semi': ['error', 'always'],
+    semi: ['error', 'always'],
   },
 };
