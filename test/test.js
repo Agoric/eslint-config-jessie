@@ -1,20 +1,14 @@
 const path = require('path');
-const requireIndex = require('requireindex');
-
 const configTester = require('eslint-config-rule-tester');
 
-const myConfig = {};
-myConfig.env = require('../config/env.js');
-myConfig.parserOptions = require('../config/parserOptions');
-
-const rules = requireIndex(path.resolve(__dirname, '../config/rules'));
+const jessieConfig = require('../index');
 
 // we want to iterate over the rules and bring in their matching tests
-
-Object.keys(rules).forEach(rule => {
-  myConfig.rules = {};
-  myConfig.rules[rule] = rules[rule];
+Object.keys(jessieConfig.rules).forEach(key => {
+  const partialConfig = { ...jessieConfig };
+  partialConfig.rules = {};
+  partialConfig.rules[key] = jessieConfig.rules[key];
   // eslint-disable-next-line global-require
-  const test = require(path.resolve(__dirname, './rules/', rule)); // eslint-disable-line import/no-dynamic-require
-  configTester(rule, myConfig, test);
+  const test = require(path.resolve(__dirname, './rules/', key)); // eslint-disable-line import/no-dynamic-require
+  configTester(key, partialConfig, test);
 });

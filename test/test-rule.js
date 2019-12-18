@@ -7,6 +7,8 @@
 const path = require('path');
 const configTester = require('eslint-config-rule-tester');
 
+const jessieConfig = require('../index');
+
 // ruleName is the fourth argument
 const ruleName = process.argv[3];
 
@@ -14,17 +16,11 @@ const ruleName = process.argv[3];
 const tests = require(path.resolve(__dirname, './rules/', ruleName)); // eslint-disable-line import/no-dynamic-require
 
 // put together eslint config that only includes the selected rule
-const myConfig = {};
-myConfig.env = require('../config/env.js');
-myConfig.parserOptions = require('../config/parserOptions');
+const partialConfig = jessieConfig;
+partialConfig.rules = {};
+partialConfig.rules[ruleName] = jessieConfig.rules[ruleName];
 
-myConfig.rules = {};
-// eslint-disable-next-line import/no-dynamic-require
-myConfig.rules[ruleName] = require(path.resolve(
-  __dirname,
-  '../config/rules',
-  ruleName,
-));
+console.log(partialConfig);
 
 // run the tests and print results to the console
-configTester(ruleName, myConfig, tests);
+configTester(ruleName, partialConfig, tests);

@@ -40,6 +40,22 @@ module.exports = {
       errors: ['generators are not allowed.'],
     },
     {
+      code: `
+          async function* makeRangeIterator(start = 0, end = Infinity, step = 1) {
+            let iterationCount = 0;
+              for (let i = start; i < end; i += step) {
+                iterationCount += 1;
+                yield i;
+            }
+            return iterationCount;
+          }
+        `, // "FunctionDeclaration[generator=true]",
+      errors: [
+        'async functions are not allowed.',
+        'generators are not allowed.',
+      ],
+    },
+    {
       code: 'async function asyncCall() {};', // "FunctionDeclaration[async=true]",
       errors: ['async functions are not allowed.'],
     },

@@ -10,7 +10,7 @@ For more information on Jessie, view the [repository on Github](https://github.c
 
 ## Installation
 
-Prerequisites: Node.js (>=6.14), npm version 3+.
+Prerequisites: Node.js (>=12.13.1 recommended), npm (>=6.13.4 recommended).
 
 You'll first need to install [ESLint](http://eslint.org). We recommend installing it locally rather than globally:
 
