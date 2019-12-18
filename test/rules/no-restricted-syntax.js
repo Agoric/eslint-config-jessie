@@ -50,7 +50,10 @@ module.exports = {
             return iterationCount;
           }
         `, // "FunctionDeclaration[generator=true]",
-      errors: ['async functions are not allowed.', 'generators are not allowed.'],
+      errors: [
+        'async functions are not allowed.',
+        'generators are not allowed.',
+      ],
     },
     {
       code: 'async function asyncCall() {};', // "FunctionDeclaration[async=true]",
