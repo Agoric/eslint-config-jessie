@@ -109,3 +109,24 @@ function partitionFromGlobs(globs, cwd = undefined) {
 }
 
 exports.partitionFromGlobs = partitionFromGlobs;
+
+function jessieOverrides(globs, srcdir, additionalJessieOverrides = {}) {
+  const overrides = [];
+  if (process.env.DISABLE_JESSIE_OVERRIDE) {
+    // Guard against infinite recursion.
+    return overrides;
+  }
+
+  const [jessieFiles] = partitionFromGlobs(globs, srcdir);
+  if (jessieFiles.length) {
+    // We have some Jessie files to apply against.
+    overrides.push({
+      ...additionalJessieOverrides,
+      files: jessieFiles,
+      extends: ['jessie'],
+    });
+  }
+  return overrides;
+}
+
+exports.jessieOverrides = jessieOverrides;

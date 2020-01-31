@@ -32,13 +32,26 @@ You should then setup a configuration file if you don't have one yet:
 $ ./node_modules/.bin/eslint --init
 ```
 
-Now we need to turn on the Jessie rules in the ESLint [config file](https://eslint.org/docs/user-guide/configuring). This config file will have various properties such as `"rules"` and `"env"`. Find or add the `"extends"` property, and set the value to `jessie`:
+### Automatic Jessie detection
+
+Files can be automatically detected to be linted using this configuration if they
+have a `'use jessie';` or `"use jessie";` directive at the top of the file,
+similar to `"use strict";`. Without `'use jessie';` (or `"use jessie";`), the
+default ESLint configuration is used. Please see [`sample.eslintrc.js`](sample.eslintrc.js)
+for an example of how to configure Jessie vs. non-Jessie differentiation for
+linting using one configuration file.
+
+### Explicit Jessie linting
+
+If you don't want to use the automatic detection, you will need to turn on the Jessie rules explicitly in the ESLint [config file](https://eslint.org/docs/user-guide/configuring). This config file will have various properties such as `"rules"` and `"env"`. Find or add the `"extends"` property, and set the value to `jessie`:
 
 ```
     "extends": "jessie"
 ```
 
 This will allow you to use the Jessie [shareable config file](https://eslint.org/docs/user-guide/configuring#using-a-shareable-configuration-package).
+
+### Running ESLint
 
 After that, you can run ESLint in your project’s root directory like this:
 
