@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-jessie",
-  "version": "0.0.5-dev.0",
+  "version": "0.0.6",
   "description": "A shareable config for the Jessie subset of JavaScript",
   "main": "index.js",
   "scripts": {
