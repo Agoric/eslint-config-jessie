@@ -1,8 +1,10 @@
 const fs = require('fs');
 const { FileEnumerator } = require('eslint/lib/cli-engine/file-enumerator');
-const { CascadingConfigArrayFactory } = require('eslint/lib/cli-engine/cascading-config-array-factory');
+const {
+  CascadingConfigArrayFactory,
+} = require('eslint/lib/cli-engine/cascading-config-array-factory');
 
-exports.indexOfFirstStatement = function indexOfFirstStatement(text) {
+function indexOfFirstStatement(text) {
   let i = 0;
   let slashStarComment = false;
 
@@ -40,20 +42,22 @@ exports.indexOfFirstStatement = function indexOfFirstStatement(text) {
   }
   return -1;
 }
+exports.indexOfFirstStatement = indexOfFirstStatement;
 
-exports.partitionFiles = function partitionFiles(files, dir = '') {
+function partitionFiles(files, dir = '') {
   const jessieFiles = [];
   const nonJessieFiles = [];
   for (const f of files) {
     if (!f.endsWith('.js')) {
       nonJessieFiles.push(f);
+      // eslint-disable-next-line no-continue
       continue;
     }
 
     // maybe a Jessie file
     let isJessie = false;
     // TODO: Maybe lazily read the file.
-    const rawText = fs.readFileSync(`${dir}${f}`, 'utf-8', );
+    const rawText = fs.readFileSync(`${dir}${f}`, 'utf-8');
     const text = rawText.startsWith('#!') ? `// ${rawText}` : rawText;
 
     // Find the 'use jessie' token.
@@ -74,9 +78,10 @@ exports.partitionFiles = function partitionFiles(files, dir = '') {
     }
   }
   return [jessieFiles, nonJessieFiles];
-};
+}
 
-exports.partitionFromGlobs = function partitionFromGlobs(globs, cwd = undefined) {
+exports.partitionFiles = partitionFiles;
+function partitionFromGlobs(globs, cwd = undefined) {
   const ccaf = new CascadingConfigArrayFactory({ cwd });
   const configArrayFactory = {
     getConfigArrayForFile(filePath) {
@@ -88,7 +93,7 @@ exports.partitionFromGlobs = function partitionFromGlobs(globs, cwd = undefined)
       }
     },
   };
-  const enumerator = new FileEnumerator({configArrayFactory, cwd});
+  const enumerator = new FileEnumerator({ configArrayFactory, cwd });
   const files = [];
   const dir = cwd ? `${cwd}/` : '';
   for (const { filePath } of enumerator.iterateFiles(globs)) {
@@ -102,3 +107,5 @@ exports.partitionFromGlobs = function partitionFromGlobs(globs, cwd = undefined)
   const [jessieFiles, nonJessieFiles] = partitionFiles(files, dir);
   return [jessieFiles, nonJessieFiles];
 }
+
+exports.partitionFromGlobs = partitionFromGlobs;

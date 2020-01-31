@@ -1,15 +1,16 @@
-/* global module */
+// eslint-disable-next-line import/no-unresolved
+const { partitionFromGlobs } = require('eslint-config-jessie/util');
+
 const overrides = [];
 
 // Guard against infinite recursion.
 if (!process.env.DISABLE_JESSIE_OVERRIDE) {
-  const { partitionFromGlobs } = require('eslint-config-jessie/jessie-eslint');
   const [jessieFiles] = partitionFromGlobs(['**/*.js'], __dirname);
   if (jessieFiles.length) {
     // We have some Jessie files to apply against.
     overrides.push({
       files: jessieFiles,
-      extends: ["jessie"],
+      extends: ['jessie'],
     });
   }
 }
