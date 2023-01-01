@@ -113,3 +113,4 @@ Jessie deliberately does not include:
 - added a config-tester utility
 - removed 'strict' as a rule because it does not enforce the strict rules as expected
 - recognized that 'curly' does not enforce curly braces within switch statements, which Jessie requires. A test for this is commented out.
+test
