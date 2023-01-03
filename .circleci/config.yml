@@ -2,17 +2,14 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: cimg/node:12.16
+      - image: cimg/node:lts
     steps:
       - checkout # special step to check out source code to working directory
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Install npm
+          name: Install node_modules
           command: npm install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
